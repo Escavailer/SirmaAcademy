@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Responsive Design</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            background-color: rgb(66, 66, 66);
+            padding: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        nav a {
+            display: flex;
+            color: white;
+            
+        }
+        .container {
+            display: grid;
+            padding: 1em;
+        }
+        .section {
+            background-color: #ddd;
+            padding: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .section:hover {
+            background-color: aqua;
+        }
+
+        @media (min-width: 600px) and (max-width: 899px) {
+            .container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 900px) and (max-width: 1399px) {    
+            nav {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 200px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .container {
+                margin-left: 220px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                margin-left: 0;
+                grid-template-columns: repeat(4, 1fr);
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                position: static;
+                width: 100%;
+                border: none;
+            }
+            nav a {
+                display: inline-block;
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Advanced Responsive Design</h1>
+    </header>
+    <nav>
+        <a href="#section1">Section 1</a>
+        <a href="#section2">Section 2</a>
+        <a href="#section3">Section 3</a>
+        <a href="#section4">Section 4</a>
+    </nav>
+    <div class="container">
+        <div id="section1" class="section">Section 1</div>
+        <div id="section2" class="section">Section 2</div>
+        <div id="section3" class="section">Section 3</div>
+        <div id="section4" class="section">Section 4</div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Advanced Responsive Design</p>
+    </footer> 
+</body>
+</html>
