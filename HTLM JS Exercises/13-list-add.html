@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive List</title>
+    <style>
+        #items li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="list-app">
+        <p>Click on the item to change the text, or click on the button to create a new item.</p>
+        <ul id="items">
+            <li>Map, filter, reduce</li>
+            <li>The DOM</li>
+            <li>Callbacks</li>
+        </ul>
+        <input type="text" id="new-item-input" value="">
+        <button type="button" id="create-new-button">Create New</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const itemsList = document.getElementById('items');
+            const newItemInput = document.getElementById('new-item-input');
+            const createNewButton = document.getElementById('create-new-button');
+
+            const handleEditItem = (event) => {
+                const listItem = event.target;
+                const currentText = listItem.textContent;
+                const newText = prompt('Edit item text:', currentText);
+                if (newText !== null && newText.trim() !== '') {
+                    listItem.textContent = newText;
+                }
+            };
+
+            const attachItemClickListener = (item) => {
+                item.addEventListener('click', handleEditItem);
+            };
+
+            const initializeListItems = () => {
+                const listItems = itemsList.querySelectorAll('li');
+                listItems.forEach(attachItemClickListener);
+            };
+
+            const createNewItem = () => {
+                const newItemText = newItemInput.value.trim();
+            
+                const newItem = document.createElement('li');
+                newItem.textContent = newItemText;
+                attachItemClickListener(newItem);
+                itemsList.appendChild(newItem);
+                newItemInput.value = '';
+            };
+
+            createNewButton.addEventListener('click', createNewItem);
+
+            initializeListItems();
+        });
+    </script>
+</body>
+</html>

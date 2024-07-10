@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Window Width and Height</title>
+</head>
+<body>
+
+<p>Window Width: <span id="windowWidth"></span></p>
+<p>Window Height: <span id="windowHeight"></span></p>
+
+<script>
+
+function updateWindowDimensions() {
+    const width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
+    const height = window.innerHeight
+        || document.documentElement.clientHeight
+        || document.body.clientHeight;
+
+    document.getElementById('windowWidth').textContent = width + 'px';
+    document.getElementById('windowHeight').textContent = height + 'px';
+}
+
+updateWindowDimensions();
+
+window.addEventListener('resize', updateWindowDimensions);
+</script>
+
+</body>
+</html>
